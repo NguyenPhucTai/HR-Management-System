@@ -1,4 +1,4 @@
-package com.phuctai.demo.controller;
+package com.phuctai.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.phuctai.demo.model.Employee;
-import com.phuctai.demo.repository.EmployeeRepository;
+import com.phuctai.entity.Employee;
+import com.phuctai.repository.EmployeeRepository;
 
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin
@@ -21,7 +21,7 @@ public class EmployeeController {
 	private EmployeeRepository employeeRepository;
 	
 	// get all employees
-	@GetMapping("/employees")
+	@GetMapping("/employee")
 	public List<Employee> getAllEmployees(){
 		return employeeRepository.findAll();
 	}

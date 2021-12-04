@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    console.log("RunApp");
     LoadData();
 });
 
@@ -19,3 +20,9 @@ function LoadData(){
     });
 
 }
+
+$("#login-form").submit(function( event ) {
+    var username = document.getElementById("login-username").value;
+    var password = document.getElementById("login-password").value;
+    event.preventDefault();
+});

@@ -1,4 +1,4 @@
-package com.phuctai.demo.model;
+package com.phuctai.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@Column(name = "employeeId")
+	private String employeeId;
 	
 	@Column(name = "first_name")
 	private String firstname;

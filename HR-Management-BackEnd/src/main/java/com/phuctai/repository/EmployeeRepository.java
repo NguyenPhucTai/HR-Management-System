@@ -1,9 +1,9 @@
-package com.phuctai.demo.repository;
+package com.phuctai.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.phuctai.demo.model.Employee;
+import com.phuctai.entity.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
