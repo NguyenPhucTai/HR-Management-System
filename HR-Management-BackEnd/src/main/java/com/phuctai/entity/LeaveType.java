@@ -8,17 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ticketType")
-public class TicketType {
-
+@Table(name = "leaveType")
+public class LeaveType {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column()
 	private String name;
+	
+	@Column()
+	private String type;
 
-	public TicketType() {
+	public LeaveType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,5 +41,14 @@ public class TicketType {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 }

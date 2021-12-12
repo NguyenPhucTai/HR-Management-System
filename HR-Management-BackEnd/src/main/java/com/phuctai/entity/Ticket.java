@@ -13,15 +13,42 @@ public class Ticket {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@Column(nullable = false, unique = true, length = 20)
-	private String ticketId;
+	@Column()
+	private Long ticketTypeId;
 	
 	@Column()
 	private String name;
-	
-	@Column()
-	private long ticketTypeId;
+
+	public Ticket() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getTicketTypeId() {
+		return ticketTypeId;
+	}
+
+	public void setTicketTypeId(Long ticketTypeId) {
+		this.ticketTypeId = ticketTypeId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	
 }
