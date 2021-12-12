@@ -1,10 +1,19 @@
 package com.phuctai.entity;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,53 +24,61 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "employeeId")
+	@Column(nullable = false, unique = true, length = 20)
 	private String employeeId;
 	
-	@Column(name = "first_name")
-	private String firstname;
+	@Column(length = 50)
+	private String firstName;
 	
-	@Column(name = "last_name")
-	private String lastname;
+	@Column(length = 50)
+	private String middleName;
 	
-	@Column(name = "email_id")
-	private String emailId;
+	@Column(length = 50)
+	private String lastName;
+	
+	@Column(length = 200)
+	private String email;
+	
+	@Column(length = 20)
+	private String phone;
+	
+	@Column()
+	private String streetNumber;
+	
+	@Column()
+	private String city;
+	
+	@Column()
+	private String disctrict;
+	
+	@Column()
+	private String ward;
+	
+	@Column()
+	private Date dateOfBirth;
+	
+	@Column()
+	private Boolean status;
+	
+	@Column(nullable = false, unique = true, length = 20)
+	private String departmentId;
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "employee_role",
+            joinColumns = { @JoinColumn(name = "employee_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
+	private Set<Role> roles = new HashSet<>();
 	
 	public Employee() {
 		
 	}
 	
-	public Employee(String firstname, String lastname, String emailId) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.emailId = emailId;
-	}
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
+	
 	
 	
 }
