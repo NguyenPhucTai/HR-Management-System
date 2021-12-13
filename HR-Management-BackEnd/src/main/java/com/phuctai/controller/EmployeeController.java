@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.phuctai.entity.Employee;
+import com.phuctai.entity.User;
 import com.phuctai.repository.EmployeeRepository;
 
 //@CrossOrigin(origins = "http://localhost:3000")
@@ -22,7 +22,7 @@ public class EmployeeController {
 	
 	// get all employees
 	@GetMapping("/employee")
-	public List<Employee> getAllEmployees(){
+	public List<User> getAllEmployees(){
 		return employeeRepository.findAll();
 	}
 }

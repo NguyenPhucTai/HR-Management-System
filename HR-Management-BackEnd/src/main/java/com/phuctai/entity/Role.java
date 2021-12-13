@@ -30,14 +30,15 @@ public class Role {
                 CascadeType.MERGE
             },
             mappedBy = "roles")
-    private Set<Employee> employees = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
-	public Set<Employee> getEmployees() {
-		return employees;
+
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 	public Long getId() {
