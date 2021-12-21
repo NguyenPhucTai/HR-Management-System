@@ -20,23 +20,16 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
-
-
 @Component
 public class JwtUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	private static final Key secret = MacProvider.generateKey(SignatureAlgorithm.HS256);
-	private static final byte[] secretBytes = secret.getEncoded();
-	private static final String base64SecretBytes = Base64.getEncoder().encodeToString(secretBytes);
-
-
-	@Value("${bezkoder.app.jwtSecret}")
-	private static String jwtSecret;
+	//@Value("${bezkoder.app.jwtSecret}")
+	private static String jwtSecret = "bezKoderSecretKey";
 	
-	@Value("${bezkoder.app.jwtExpirationMs}")
-	private int jwtExpirationMs;
+	//@Value("${bezkoder.app.jwtExpirationMs}")
+	private int jwtExpirationMs = 86400000 * 10;
 	
 	public String generateJwtToken(Authentication authentication) {
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -45,7 +38,7 @@ public class JwtUtils {
 				.setSubject((userPrincipal.getUsername()))
 				.setIssuedAt(new Date())
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-				.signWith(SignatureAlgorithm.HS512, base64SecretBytes)
+				.signWith(SignatureAlgorithm.HS512, jwtSecret)
 				.compact();
 
 		return token;

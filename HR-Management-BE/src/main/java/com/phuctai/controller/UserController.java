@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/")
 public class UserController {
 
     @Autowired
@@ -23,6 +23,11 @@ public class UserController {
     @GetMapping("/employees")
     public List<User> getAllEmployees(){
         return userRepository.findAll();
+    }
+
+    @RequestMapping({ "/hello" })
+    public String hello() {
+        return "Hello World";
     }
 
 }
